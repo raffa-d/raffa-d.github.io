@@ -53,7 +53,7 @@ window.addEventListener('scroll', function () {
     const opacity = Math.max(0, 1 - (scrollPosition / (windowHeight * 0.7)));
 
     // Applica l'opacità all'header
-    header.style.opacity = opacity;
+    // header.style.opacity = opacity;
 
     // Se stiamo scrollando, rendi l'header fisso sullo sfondo
     if (scrollPosition > 0) {
