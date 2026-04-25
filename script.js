@@ -32,15 +32,47 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('hours').textContent = hours;
         document.getElementById('minutes').textContent = minutes;
         document.getElementById('seconds').textContent = seconds;
-
-        console.log("Countdown aggiornato");
     }
 
     // Esegui subito
     updateCountdown();
+    updateRsvpVisibility();
+    updatePhotoVisibility();
 
     // Esegui ogni secondo
     setInterval(updateCountdown, 1000);
+
+    function updateRsvpVisibility() {
+        var currentDate = new Date();
+        var maxDisplayDate = new Date('2026-08-16T00:00:00');
+        var rsvpSection = document.getElementById('rsvpSection');
+
+        if (!rsvpSection) {
+            return;
+        }
+
+        if (currentDate <= maxDisplayDate) {
+            rsvpSection.style.display = 'block';
+        } else {
+            rsvpSection.style.display = 'none';
+        }
+    }
+    function updatePhotoVisibility() {
+        var currentDate = new Date();
+        var minDisplayDate = new Date('2026-08-25T00:00:00');
+        var minDisplayDate = new Date('2025-08-25T00:00:00');
+        var photoSection = document.getElementById('photoSection');
+
+        if (!photoSection) {
+            return;
+        }
+
+        if (currentDate >= minDisplayDate) {
+            photoSection.style.display = 'block';
+        } else {
+            photoSection.style.display = 'none';
+        }
+    }
 });
 
 window.addEventListener('scroll', function () {
