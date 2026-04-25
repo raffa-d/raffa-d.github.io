@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCountdown();
     updateRsvpVisibility();
     updatePhotoVisibility();
+    setupCopyIban();
 
     // Esegui ogni secondo
     setInterval(updateCountdown, 1000);
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateRsvpVisibility() {
         var currentDate = new Date();
         var maxDisplayDate = new Date('2026-08-16T00:00:00');
+        //var maxDisplayDate = new Date('2025-08-16T00:00:00');
         var rsvpSection = document.getElementById('rsvpSection');
 
         if (!rsvpSection) {
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePhotoVisibility() {
         var currentDate = new Date();
         var minDisplayDate = new Date('2026-08-25T00:00:00');
-        var minDisplayDate = new Date('2025-08-25T00:00:00');
+        //var minDisplayDate = new Date('2025-08-25T00:00:00');
         var photoSection = document.getElementById('photoSection');
 
         if (!photoSection) {
@@ -72,6 +74,38 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             photoSection.style.display = 'none';
         }
+    }
+
+    function setupCopyIban() {
+        var copyButton = document.getElementById('copyIbanButton');
+        if (!copyButton || !navigator.clipboard) {
+            return;
+        }
+
+        copyButton.addEventListener('click', function () {
+            var iban = copyButton.getAttribute('data-iban') || '';
+            if (!iban) {
+                return;
+            }
+
+            navigator.clipboard.writeText(iban).then(function () {
+                var icon = copyButton.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-check';
+                    copyButton.style.backgroundColor = 'var(--gold)';
+                }
+                copyButton.setAttribute('aria-label', 'IBAN copiato');
+                setTimeout(function () {
+                    if (icon) {
+                        icon.className = 'far fa-copy';
+                        copyButton.style.backgroundColor = 'var(--dark-orange)';
+                    }
+                    copyButton.setAttribute('aria-label', 'Copia IBAN');
+                }, 1500);
+            }).catch(function () {
+                window.alert('Impossibile copiare l\'IBAN. Per favore usa il copia manuale.');
+            });
+        });
     }
 });
 

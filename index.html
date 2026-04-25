@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Roberta e Giovanni - 31 Agosto 2026</title>
+    <title>Giovanni e Roberta - 31 Agosto 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -143,7 +143,12 @@
                 <div class="detail-card">
                     <div class="detail-card-body">
                         <h4>IBAN</h4>
-                        <p>IT61U0760114900001080860602</p>
+                        <div class="iban-row">
+                            <p class="iban-text" id="ibanValue">IT61U0760114900001080860602</p>
+                            <button class="copy-iban-button" id="copyIbanButton" type="button" data-iban="IT61U0760114900001080860602" aria-label="Copia IBAN">
+                                <i class="far fa-copy" aria-hidden="true" ></i>
+                            </button>
+                        </div>
                         <h4 style="margin-top: 15px;">Intestatari</h4>
                         <p>Giovanni Gentile (oppure) Roberta Striano</p>
 
@@ -187,7 +192,7 @@
                         <!-- From Uiverse.io by adamgiebl -->
                         <button class="button-confirm"
                             onclick="window.open('https://forms.gle/cRhbboqaKu1Kpu74A', '_blank')">
-                            Invia conferma
+                            Carica foto
                         </button>
                     </div>
                 </div>
